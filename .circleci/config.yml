@@ -1,0 +1,61 @@
+version: 2
+jobs:
+  base:
+    docker:
+      - image: docker:stable-git
+    environment:
+      IMAGE_USER: lukaswhl
+      IMAGE_PREFIX: lmms-ci-
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 17.05.0-ce
+      - run: 
+          name: Ubuntu 14.04 base image
+          command: |
+            ./build-image.sh base 14.04
+          environment:
+            DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
+  linux:
+    docker:
+      - image: docker:stable-git
+    environment:
+      IMAGE_USER: lukaswhl
+      IMAGE_PREFIX: lmms-ci-
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 17.05.0-ce
+      - run: 
+          name: Ubuntu 14.04 linux images
+          command: |
+            ./build-image.sh linux 14.04
+            ./build-image.sh linux.gcc 14.04
+          environment:
+            DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
+  linux.mingw:
+    docker:
+      - image: docker:stable-git
+    environment:
+      IMAGE_USER: lukaswhl
+      IMAGE_PREFIX: lmms-ci-
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 17.05.0-ce
+      - run: 
+          name: Ubuntu 14.04 MinGW images
+          command: |
+            ./build-image.sh linux.mingw32 14.04
+            ./build-image.sh linux.mingw64 14.04
+workflows:
+  version: 2
+  build_images:
+    jobs:
+      - base
+      - linux:
+          requires:
+           - base
+      - linux.mingw:
+          requires:
+           - base
