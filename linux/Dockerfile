@@ -26,4 +26,6 @@ RUN apt-get update -qq &&       \
         wine-dev                \
         gcc-multilib            \
         g++-multilib            \
+        qt5-default             \
+        qtbase5-dev             \
 && rm -rf /var/lib/apt/lists/*
