@@ -4,6 +4,8 @@ FROM ubuntu:${UBUNTU_VERSION}
 RUN apt-get update && apt-get install -y    \
     --no-install-recommends                 \
     ca-certificates                         \
+    make                                    \
+    libc6-dev                               \
     cmake                                   \
     git                                     \
     ssh-client                              \
