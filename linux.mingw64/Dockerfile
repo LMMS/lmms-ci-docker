@@ -1,4 +1,4 @@
-FROM lukaswhl/lmms-ci-linux.mingw32:14.04
+FROM lukaswhl/lmms-ci-linux.mingw:14.04
 
 RUN apt-get update && apt-get install -y    \
     --force-yes --no-install-recommends     \
@@ -21,4 +21,4 @@ RUN apt-get update && apt-get install -y    \
         mingw64-x-libgig                    \
         mingw64-x-libsoundio                \
         mingw64-x-lame                      \
-&& apt-get clean && rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/*

@@ -1,53 +1,34 @@
+shared: &shared
+  docker:
+    - image: docker:stable-git
+  environment:
+    IMAGE_USER: lukaswhl
+    IMAGE_PREFIX: lmms-ci-
+  steps:
+    - checkout
+    - setup_remote_docker:
+        version: 17.05.0-ce
+    - run:
+        name: Build image
+        command: |
+          ./build-image.sh $CIRCLE_JOB 14.04
+        environment:
+          DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
+
 version: 2
 jobs:
   base:
-    docker:
-      - image: docker:stable-git
-    environment:
-      IMAGE_USER: lukaswhl
-      IMAGE_PREFIX: lmms-ci-
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 17.05.0-ce
-      - run: 
-          name: Ubuntu 14.04 base image
-          command: |
-            ./build-image.sh base 14.04
-          environment:
-            DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
+    <<: *shared
   linux:
-    docker:
-      - image: docker:stable-git
-    environment:
-      IMAGE_USER: lukaswhl
-      IMAGE_PREFIX: lmms-ci-
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 17.05.0-ce
-      - run: 
-          name: Ubuntu 14.04 linux images
-          command: |
-            ./build-image.sh linux 14.04
-            ./build-image.sh linux.gcc 14.04
-          environment:
-            DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
+    <<: *shared
+  linux.gcc:
+    <<: *shared
   linux.mingw:
-    docker:
-      - image: docker:stable-git
-    environment:
-      IMAGE_USER: lukaswhl
-      IMAGE_PREFIX: lmms-ci-
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 17.05.0-ce
-      - run: 
-          name: Ubuntu 14.04 MinGW images
-          command: |
-            ./build-image.sh linux.mingw32 14.04
-            ./build-image.sh linux.mingw64 14.04
+    <<: *shared
+  linux.mingw32:
+    <<: *shared
+  linux.mingw64:
+    <<: *shared
 workflows:
   version: 2
   build_images:
@@ -56,6 +37,15 @@ workflows:
       - linux:
           requires:
            - base
+      - linux.gcc:
+          requires:
+           - linux
       - linux.mingw:
           requires:
            - base
+      - linux.mingw32:
+          requires:
+           - linux.mingw
+      - linux.mingw64:
+          requires:
+           - linux.mingw

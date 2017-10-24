@@ -23,3 +23,16 @@ RUN if [ "$UBUNTU_VERSION" = "14.04" ]; then  \
         qttools5-dev                          \
 ;fi                                           \
 && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y    \
+    --force-yes --no-install-recommends     \
+        wget                                \
+&& rm -rf /var/lib/apt/lists/*
+
+ADD ccache.sha256 /tmp/ccache/ccache.sha256
+ADD http://archive.ubuntu.com/ubuntu/pool/main/c/ccache/ccache_3.2.4-1_amd64.deb /tmp/ccache/
+
+RUN cd /tmp/ccache && \
+    sha256sum -c ccache.sha256 && \
+    sudo dpkg -i ccache_3.2.4-1_amd64.deb && \
+    rm -r /tmp/ccache
