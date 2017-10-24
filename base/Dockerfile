@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y    \
     ca-certificates                         \
     cmake                                   \
     git                                     \
+    ssh-client                              \
     qt5-default                             \
     qtbase5-dev                             \
     qttools5-dev-tools                      \
