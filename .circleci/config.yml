@@ -3,7 +3,7 @@ shared: &shared
     - image: docker:stable-git
   environment:
     IMAGE_USER: lmmsci
-    IMAGE_PREFIX: lmms-ci-
+    IMAGE_PREFIX: ""
   steps:
     - checkout
     - setup_remote_docker:

@@ -1,4 +1,4 @@
-FROM lmmsci/lmms-ci-base:14.04
+FROM lmmsci/base:14.04
 
 RUN apt-get update && apt-get install -y    \
     --no-install-recommends                 \

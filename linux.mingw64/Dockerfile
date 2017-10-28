@@ -1,4 +1,4 @@
-FROM lmmsci/lmms-ci-linux.mingw:14.04
+FROM lmmsci/linux.mingw:14.04
 
 RUN apt-get update && apt-get install -y    \
     --force-yes --no-install-recommends     \
