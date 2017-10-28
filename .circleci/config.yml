@@ -2,7 +2,7 @@ shared: &shared
   docker:
     - image: docker:stable-git
   environment:
-    IMAGE_USER: lukaswhl
+    IMAGE_USER: lmmsci
     IMAGE_PREFIX: lmms-ci-
   steps:
     - checkout

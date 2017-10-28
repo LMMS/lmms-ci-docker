@@ -1,5 +1,5 @@
 ARG UBUNTU_VERSION
-FROM lukaswhl/lmms-ci-base:${UBUNTU_VERSION}
+FROM lmmsci/lmms-ci-base:${UBUNTU_VERSION}
 
 RUN dpkg --add-architecture i386
 
