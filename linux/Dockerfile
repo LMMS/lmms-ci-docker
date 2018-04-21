@@ -28,4 +28,8 @@ RUN apt-get update -qq &&       \
         g++-multilib            \
         qt5-default             \
         qtbase5-dev             \
+        libqt5x11extras5-dev    \
+        libxcb-keysyms1-dev     \
+        libxcb-util0-dev        \
+        qtbase5-private-dev     \
 && rm -rf /var/lib/apt/lists/*
