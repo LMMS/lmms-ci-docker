@@ -13,6 +13,10 @@ RUN apt-get update && apt-get install -y    \
     ssh-client                              \
     qt5-default                             \
     qttools5-dev-tools                      \
+    perl                                    \
+    libxml2-utils                           \
+    libxml-perl                             \
+    liblist-moreutils-perl                  \
 && rm -rf /var/lib/apt/lists/*
 
 # On Ubuntu 14.04 Qt5LinguistToolsConfig.cmake is provided by qttools5-dev, in
