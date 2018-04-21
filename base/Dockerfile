@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y    \
     ca-certificates                         \
     make                                    \
     libc6-dev                               \
-    cmake                                   \
+    cmake3                                  \
     git                                     \
     ssh-client                              \
     qt5-default                             \
