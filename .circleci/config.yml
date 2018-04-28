@@ -11,10 +11,9 @@ shared: &shared
     - run:
         name: Build image
         command: |
-          ./build-image.sh $CIRCLE_JOB 14.04
+          ./build-image.sh $CIRCLE_JOB 18.04
         environment:
-          DOCKER_ARGS: "--build-arg UBUNTU_VERSION=14.04"
-
+          DOCKER_ARGS: "--build-arg UBUNTU_VERSION=18.04"
 version: 2
 jobs:
   base:

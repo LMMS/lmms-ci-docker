@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y    \
     ca-certificates                         \
     make                                    \
     libc6-dev                               \
-    cmake3                                  \
+    cmake                                   \
     git                                     \
     ssh-client                              \
     qt5-default                             \
@@ -33,5 +33,5 @@ ADD http://archive.ubuntu.com/ubuntu/pool/main/c/ccache/ccache_3.3.4-1_amd64.deb
 
 RUN cd /tmp/ccache && \
     sha256sum -c ccache.sha256 && \
-    sudo dpkg -i ccache_3.3.4-1_amd64.deb && \
+    dpkg -i ccache_3.3.4-1_amd64.deb && \
     rm -r /tmp/ccache
