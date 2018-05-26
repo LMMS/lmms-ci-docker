@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y    \
         lsb-release                         \
         nsis                                \
         cloog-isl                           \
-        jack                                \
+        libjack-dev                         \
         libmpc3                             \
         mingw-w64                           \
         mingw-w64-tools                     \
