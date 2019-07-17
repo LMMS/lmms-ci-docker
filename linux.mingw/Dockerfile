@@ -35,4 +35,5 @@ RUN apt-get update && apt-get install -y    \
         qt5base-mingw-w64                   \
         sdl-mingw-w64                       \
         stk-mingw-w64                       \
+        file                                \
 && rm -rf /var/lib/apt/lists/*
