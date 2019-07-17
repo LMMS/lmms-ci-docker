@@ -29,9 +29,9 @@ RUN if [ "$UBUNTU_VERSION" = "14.04" ]; then  \
 && rm -rf /var/lib/apt/lists/*
 
 ADD ccache.sha256 /tmp/ccache/ccache.sha256
-ADD http://archive.ubuntu.com/ubuntu/pool/main/c/ccache/ccache_3.3.4-1_amd64.deb /tmp/ccache/
+ADD http://archive.ubuntu.com/ubuntu/pool/main/c/ccache/ccache_3.4.1-1_amd64.deb /tmp/ccache/
 
 RUN cd /tmp/ccache && \
     sha256sum -c ccache.sha256 && \
-    dpkg -i ccache_3.3.4-1_amd64.deb && \
+    dpkg -i ccache_3.4.1-1_amd64.deb && \
     rm -r /tmp/ccache
