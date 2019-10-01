@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y    \
     libxml2-utils                           \
     libxml-perl                             \
     liblist-moreutils-perl                  \
+    ccache=3.2.4-1                          \
 && rm -rf /var/lib/apt/lists/*
 
 # On Ubuntu 14.04 Qt5LinguistToolsConfig.cmake is provided by qttools5-dev, in
@@ -27,11 +28,3 @@ RUN if [ "$UBUNTU_VERSION" = "14.04" ]; then  \
         qttools5-dev                          \
 ;fi                                           \
 && rm -rf /var/lib/apt/lists/*
-
-ADD ccache.sha256 /tmp/ccache/ccache.sha256
-ADD http://archive.ubuntu.com/ubuntu/pool/main/c/ccache/ccache_3.3.4-1_amd64.deb /tmp/ccache/
-
-RUN cd /tmp/ccache && \
-    sha256sum -c ccache.sha256 && \
-    dpkg -i ccache_3.3.4-1_amd64.deb && \
-    rm -r /tmp/ccache
