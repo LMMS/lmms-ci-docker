@@ -8,4 +8,7 @@ RUN apt-get update && apt-get install -y    \
     stk                                     \
     wget                                    \
     file									\
+    # for vst
+    wine1.6                                 \
+    wine1.6-dev                             \
 && rm -rf /var/lib/apt/lists/*

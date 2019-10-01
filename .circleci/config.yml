@@ -15,8 +15,20 @@ shared: &shared
           IMAGE_USER: lmmsci
           IMAGE_PREFIX: ""
           DOCKER_ARGS: "--build-arg UBUNTU_VERSION=$UBUNTU_VERSION"
+
+xenial: &xenial
+  <<: *shared
+  environment:
+    UBUNTU_VERSION: "xenial"
 version: 2
 jobs:
+  base:xenial:
+    <<: *xenial
+  linux:xenial:
+    <<: *xenial
+  linux.gcc:
+    <<: *xenial
+
   base:18.04:
     <<: *shared
   linux:18.04:
@@ -31,13 +43,17 @@ workflows:
   version: 2
   build_images:
     jobs:
+      - base:xenial
+      - linux:xenial:
+          requires:
+            - base:xenial
+      - linux.gcc:xenial:
+          requires:
+           - linux:xenial
       - base:18.04
       - linux:18.04:
           requires:
            - base:18.04
-      - linux.gcc:18.04:
-          requires:
-           - linux:18.04
       - linux.mingw:18.04:
           requires:
            - base:18.04
