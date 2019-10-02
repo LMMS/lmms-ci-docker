@@ -14,7 +14,6 @@ shared: &shared
         environment:
           IMAGE_USER: lmmsci
           IMAGE_PREFIX: ""
-          DOCKER_ARGS: "--build-arg UBUNTU_VERSION=$UBUNTU_VERSION"
 
 xenial: &xenial
   <<: *shared

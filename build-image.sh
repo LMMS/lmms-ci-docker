@@ -34,7 +34,7 @@ log "Building image from Dockerfile"
 docker build            \
     --tag $IMAGE:$TAG   \
     $CACHE_FROM         \
-    $DOCKER_ARGS        \
+    --build-arg UBUNTU_VERSION="$UBUNTU_VERSION" \
     $DOCKERFILE
 
 if [ "$CIRCLE_BRANCH" = "master" ]; then
