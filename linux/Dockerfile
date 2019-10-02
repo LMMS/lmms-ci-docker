@@ -24,9 +24,6 @@ RUN apt-get update -qq &&       \
         libxft-dev              \
         libxinerama-dev         \
         portaudio19-dev         \
-        libwine-dev             \
-        libwine-dev:i386        \
-        wine64-tools            \
         gcc-multilib            \
         g++-multilib            \
         qt5-default             \

@@ -2,8 +2,7 @@ shared: &shared
   docker:
     - image: docker:stable-git
   environment:
-    IMAGE_USER: lmmsci
-    IMAGE_PREFIX: ""
+    UBUNTU_VERSION: "18.04"
   steps:
     - checkout
     - setup_remote_docker:
@@ -11,40 +10,55 @@ shared: &shared
     - run:
         name: Build image
         command: |
-          ./build-image.sh $CIRCLE_JOB 18.04
+          ./build-image.sh $CIRCLE_JOB
         environment:
-          DOCKER_ARGS: "--build-arg UBUNTU_VERSION=18.04"
+          IMAGE_USER: lmmsci
+          IMAGE_PREFIX: ""
+
+xenial: &xenial
+  <<: *shared
+  environment:
+    UBUNTU_VERSION: "xenial"
 version: 2
 jobs:
-  base:
+  base:xenial:
+    <<: *xenial
+  linux:xenial:
+    <<: *xenial
+  linux.gcc:xenial:
+    <<: *xenial
+
+  base:18.04:
     <<: *shared
-  linux:
+  linux:18.04:
     <<: *shared
-  linux.gcc:
+  linux.mingw:18.04:
     <<: *shared
-  linux.mingw:
+  linux.mingw32:18.04:
     <<: *shared
-  linux.mingw32:
-    <<: *shared
-  linux.mingw64:
+  linux.mingw64:18.04:
     <<: *shared
 workflows:
   version: 2
   build_images:
     jobs:
-      - base
-      - linux:
+      - base:xenial
+      - linux:xenial:
           requires:
-           - base
-      - linux.gcc:
+            - base:xenial
+      - linux.gcc:xenial:
           requires:
-           - linux
-      - linux.mingw:
+           - linux:xenial
+      - base:18.04
+      - linux:18.04:
           requires:
-           - base
-      - linux.mingw32:
+           - base:18.04
+      - linux.mingw:18.04:
           requires:
-           - linux.mingw
-      - linux.mingw64:
+           - base:18.04
+      - linux.mingw32:18.04:
           requires:
-           - linux.mingw
+           - linux.mingw:18.04
+      - linux.mingw64:18.04:
+          requires:
+           - linux.mingw:18.04

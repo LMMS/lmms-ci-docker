@@ -1,10 +1,21 @@
 #!/usr/bin/env sh
 
-set -e
+set -e -x
+
+DOCKERFILE_AND_TAG=$1
+
+# Split DOCKERFILE_AND_TAG into $1 and $2.
+OLDIFS="$IFS"
+IFS=":"
+# shellcheck disable=SC2086
+set -- $DOCKERFILE_AND_TAG
 
 IMAGE=$IMAGE_USER/$IMAGE_PREFIX$1
 DOCKERFILE=$1
 TAG=$2
+
+# Restore the IFS
+IFS="$OLDIFS"
 
 function log() {
     echo -e "\e[35m[build-image.sh]\e[39m $@"
@@ -23,7 +34,7 @@ log "Building image from Dockerfile"
 docker build            \
     --tag $IMAGE:$TAG   \
     $CACHE_FROM         \
-    $DOCKER_ARGS        \
+    --build-arg UBUNTU_VERSION="$UBUNTU_VERSION" \
     $DOCKERFILE
 
 if [ "$CIRCLE_BRANCH" = "master" ]; then
