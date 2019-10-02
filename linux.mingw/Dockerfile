@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
         gnupg                            \
 && rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb http://ppa.launchpad.net/tobydox/mingw-w64/ubuntu artful main" >> /etc/apt/sources.list
+RUN echo "deb http://ppa.launchpad.net/tobydox/mingw-w64/ubuntu bionic main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 72931B477E22FEFD47F8DECE02FE5F12ADDE29B2
 
 RUN apt-get update && apt-get install -y    \
