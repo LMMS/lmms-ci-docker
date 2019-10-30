@@ -18,14 +18,14 @@ shared: &shared
 xenial: &xenial
   <<: *shared
   environment:
-    UBUNTU_VERSION: "xenial"
+    UBUNTU_VERSION: "16.04"
 version: 2
 jobs:
-  base:xenial:
+  base:16.04:
     <<: *xenial
-  linux:xenial:
+  linux:16.04:
     <<: *xenial
-  linux.gcc:xenial:
+  linux.gcc:16.04:
     <<: *xenial
 
   base:18.04:
@@ -42,13 +42,13 @@ workflows:
   version: 2
   build_images:
     jobs:
-      - base:xenial
-      - linux:xenial:
+      - base:16.04
+      - linux:16.04:
           requires:
-            - base:xenial
-      - linux.gcc:xenial:
+            - base:16.04
+      - linux.gcc:16.04:
           requires:
-           - linux:xenial
+           - linux:16.04
       - base:18.04
       - linux:18.04:
           requires:
