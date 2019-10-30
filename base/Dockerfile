@@ -1,31 +1,32 @@
 ARG UBUNTU_VERSION
 FROM ubuntu:${UBUNTU_VERSION}
+ARG UBUNTU_VERSION
 
 ENV UBUNTU_VERSION ${UBUNTU_VERSION}
 
 RUN apt-get update && apt-get install -y    \
     --no-install-recommends                 \
     ca-certificates                         \
+    software-properties-common              \
     make                                    \
     libc6-dev                               \
     cmake                                   \
     git                                     \
     ssh-client                              \
-    qt5-default                             \
-    qttools5-dev-tools                      \
     perl                                    \
     libxml2-utils                           \
     libxml-perl                             \
     liblist-moreutils-perl                  \
 && rm -rf /var/lib/apt/lists/*
 
-# On Ubuntu 14.04 Qt5LinguistToolsConfig.cmake is provided by qttools5-dev, in
-# later versions it was moved to qttools5-dev-tools. lupdate itself is always
-# provided by qttools5-dev-tools
-RUN if [ "$UBUNTU_VERSION" = "14.04" ]; then  \
-    apt-get update && apt-get install -y      \
-        qttools5-dev                          \
-;fi                                           \
+RUN if [ "$UBUNTU_VERSION" = "18.04" ]; then           \
+    apt-get update && apt-get install -y               \
+        qt5-default qttools5-dev-tools                 \
+;else                                                  \
+    add-apt-repository ppa:beineri/opt-qt563-xenial && \
+    apt-get update && apt-get install -y               \
+        qt56base qt56tools                             \
+;fi                                                    \
 && rm -rf /var/lib/apt/lists/*
 
 ADD ccache.sha256 /tmp/ccache/ccache.sha256
