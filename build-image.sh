@@ -37,6 +37,8 @@ docker build            \
     --build-arg UBUNTU_VERSION="$UBUNTU_VERSION" \
     $DOCKERFILE
 
+docker save $IMAGE:$TAG | gzip > image.tar.gz
+
 if [ "$CIRCLE_BRANCH" = "master" ]; then
 	log "Logging in to Docker"
 	docker login -u $DOCKER_USER -p $DOCKER_PASS

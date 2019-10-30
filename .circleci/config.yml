@@ -7,6 +7,11 @@ shared: &shared
     - checkout
     - setup_remote_docker:
         version: 17.05.0-ce
+    - attach_workspace:
+        at: /tmp/workspace
+    - run:
+        name: Load archived Docker image
+        command: if [ -f /tmp/workspace/image.tar.gz ]; then docker load -i /tmp/workspace/image.tar.gz; fi
     - run:
         name: Build image
         command: |
@@ -14,6 +19,10 @@ shared: &shared
         environment:
           IMAGE_USER: lmmsci
           IMAGE_PREFIX: ""
+    - persist_to_workspace:
+        root: .
+        paths:
+          - ./image.tar.gz
 
 xenial: &xenial
   <<: *shared
