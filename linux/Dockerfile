@@ -1,5 +1,6 @@
 ARG UBUNTU_VERSION
 FROM lmmsci/base:${UBUNTU_VERSION}
+ARG UBUNTU_VERSION
 
 RUN dpkg --add-architecture i386
 
@@ -26,10 +27,19 @@ RUN apt-get update -qq &&       \
         portaudio19-dev         \
         gcc-multilib            \
         g++-multilib            \
-        qt5-default             \
-        qtbase5-dev             \
-        libqt5x11extras5-dev    \
         libxcb-keysyms1-dev     \
         libxcb-util0-dev        \
-        qtbase5-private-dev     \
+&& rm -rf /var/lib/apt/lists/*
+
+RUN if [ "$UBUNTU_VERSION" = "18.04" ]; then \
+    apt-get update -qq &&                     \
+    apt-get install -y                        \
+    --no-install-recommends                   \
+        libqt5x11extras5-dev                  \
+        qtbase5-private-dev                   \
+;else                                         \
+    apt-get update -qq &&                     \
+    apt-get install -y                        \
+        qt56x11extras                         \
+;fi                                           \
 && rm -rf /var/lib/apt/lists/*
