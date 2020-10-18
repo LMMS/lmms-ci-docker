@@ -16,6 +16,7 @@ RUN apt-get update -qq &&       \
         libfluidsynth-dev       \
         libgig-dev              \
         libjack-dev             \
+        liblilv-dev             \
         libogg-dev              \
         libsamplerate0-dev      \
         libsdl-dev              \
@@ -24,6 +25,7 @@ RUN apt-get update -qq &&       \
         libvorbis-dev           \
         libxft-dev              \
         libxinerama-dev         \
+        lv2-dev                 \
         portaudio19-dev         \
         gcc-multilib            \
         g++-multilib            \
