@@ -16,6 +16,7 @@ RUN apt-get update -qq &&       \
         libfluidsynth-dev       \
         libgig-dev              \
         libjack-dev             \
+        libmp3lame-dev          \
         liblilv-dev             \
         libogg-dev              \
         libsamplerate0-dev      \
