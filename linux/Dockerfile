@@ -1,6 +1,7 @@
 ARG UBUNTU_VERSION
 FROM lmmsci/base:${UBUNTU_VERSION}
-ARG UBUNTU_VERSION
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN dpkg --add-architecture i386
 
