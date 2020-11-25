@@ -15,7 +15,7 @@ RUN apt-get update -qq &&       \
         libfltk1.3-dev          \
         libfluidsynth-dev       \
         libgig-dev              \
-        libjack-dev             \
+        libjack-jackd2-dev      \
         libmp3lame-dev          \
         liblilv-dev             \
         libogg-dev              \
