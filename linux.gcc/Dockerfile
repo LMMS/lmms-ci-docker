@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y    \
     wget                                    \
     file									\
     # for vst
-    wine1.6                                 \
-    wine1.6-dev                             \
+    libwine-dev                             \
+    libwine-dev:i386                        \
+    wine64-tools                            \
 && rm -rf /var/lib/apt/lists/*

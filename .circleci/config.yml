@@ -24,22 +24,13 @@ shared: &shared
         paths:
           - ./image.tar.gz
 
-xenial: &xenial
-  <<: *shared
-  environment:
-    UBUNTU_VERSION: "16.04"
 version: 2
 jobs:
-  base:16.04:
-    <<: *xenial
-  linux:16.04:
-    <<: *xenial
-  linux.gcc:16.04:
-    <<: *xenial
-
   base:18.04:
     <<: *shared
   linux:18.04:
+    <<: *shared
+  linux.gcc:18.04:
     <<: *shared
   linux.mingw:18.04:
     <<: *shared
@@ -51,17 +42,13 @@ workflows:
   version: 2
   build_images:
     jobs:
-      - base:16.04
-      - linux:16.04:
-          requires:
-            - base:16.04
-      - linux.gcc:16.04:
-          requires:
-           - linux:16.04
       - base:18.04
       - linux:18.04:
           requires:
            - base:18.04
+      - linux.gcc:18.04:
+          requires:
+           - linux:18.04
       - linux.mingw:18.04:
           requires:
            - base:18.04
