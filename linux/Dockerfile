@@ -31,21 +31,10 @@ RUN apt-get update -qq &&       \
         portaudio19-dev         \
         gcc-multilib            \
         g++-multilib            \
+        qt5-default             \
+        qtbase5-dev             \
+        libqt5x11extras5-dev    \
         libxcb-keysyms1-dev     \
         libxcb-util0-dev        \
-&& rm -rf /var/lib/apt/lists/*
-
-RUN if [ "$UBUNTU_VERSION" = "18.04" ]; then \
-    apt-get update -qq &&                     \
-    apt-get install -y                        \
-    --no-install-recommends                   \
-        libqt5x11extras5-dev                  \
-        libqt5svg5-dev                        \
-        qtbase5-private-dev                   \
-;else                                         \
-    apt-get update -qq &&                     \
-    apt-get install -y                        \
-        qt56x11extras                         \
-        qt56svg                               \
-;fi                                           \
+        qtbase5-private-dev     \
 && rm -rf /var/lib/apt/lists/*
