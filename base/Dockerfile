@@ -3,6 +3,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 ARG UBUNTU_VERSION
 
 ENV UBUNTU_VERSION ${UBUNTU_VERSION}
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install -y    \
     --no-install-recommends                 \
