@@ -24,37 +24,45 @@ shared: &shared
         paths:
           - ./image.tar.gz
 
+focal: &focal
+  <<: *shared
+  environment:
+    UBUNTU_VERSION: "20.04"
+
 version: 2
 jobs:
   base:18.04:
     <<: *shared
+  base:20.04:
+    <<: *focal
   linux:18.04:
     <<: *shared
   linux.gcc:18.04:
     <<: *shared
-  linux.mingw:18.04:
-    <<: *shared
-  linux.mingw32:18.04:
-    <<: *shared
-  linux.mingw64:18.04:
-    <<: *shared
+  linux.mingw:20.04:
+    <<: *focal
+  linux.mingw32:20.04:
+    <<: *focal
+  linux.mingw64:20.04:
+    <<: *focal
 workflows:
   version: 2
   build_images:
     jobs:
       - base:18.04
+      - base:20.04
       - linux:18.04:
           requires:
            - base:18.04
       - linux.gcc:18.04:
           requires:
            - linux:18.04
-      - linux.mingw:18.04:
+      - linux.mingw:20.04:
           requires:
-           - base:18.04
-      - linux.mingw32:18.04:
+           - base:20.04
+      - linux.mingw32:20.04:
           requires:
-           - linux.mingw:18.04
-      - linux.mingw64:18.04:
+           - linux.mingw:20.04
+      - linux.mingw64:20.04:
           requires:
-           - linux.mingw:18.04
+           - linux.mingw:20.04
