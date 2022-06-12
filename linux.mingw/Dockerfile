@@ -13,7 +13,6 @@ RUN apt-get update && apt-get install -y    \
     --force-yes --no-install-recommends     \
         lsb-release                         \
         nsis                                \
-        cloog-isl                           \
         libmpc3                             \
         mingw-w64                           \
         mingw-w64-tools                     \
@@ -33,7 +32,7 @@ RUN apt-get update && apt-get install -y    \
         libz-mingw-w64-dev                  \
         portaudio-mingw-w64                 \
         qt5base-mingw-w64                   \
-        sdl-mingw-w64                       \
+        sdl2-mingw-w64                      \
         stk-mingw-w64                       \
         file                                \
 && rm -rf /var/lib/apt/lists/*
