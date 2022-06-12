@@ -1,1 +1,1 @@
-FROM lmmsci/linux.mingw:18.04
+FROM lmmsci/linux.mingw:20.04
