@@ -36,3 +36,13 @@ RUN apt-get update && apt-get install -y    \
         stk-mingw-w64                       \
         file                                \
 && rm -rf /var/lib/apt/lists/*
+
+# Work around https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930492
+# FIXME remove once we upgrade to 22.04
+ADD mingw-w64-tools.sha256 /tmp/mingw-w64-tools/mingw-w64-tools.sha256
+ADD http://archive.ubuntu.com/ubuntu/pool/universe/m/mingw-w64/mingw-w64-tools_8.0.0-1_amd64.deb /tmp/mingw-w64-tools/
+
+RUN cd /tmp/mingw-w64-tools && \
+    sha256sum -c mingw-w64-tools.sha256 && \
+    dpkg -i mingw-w64-tools_8.0.0-1_amd64.deb && \
+    rm -r /tmp/mingw-w64-tools
