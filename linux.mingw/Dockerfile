@@ -1,4 +1,4 @@
-FROM lmmsci/base:18.04
+FROM lmmsci/base:20.04
 
 RUN apt-get update && apt-get install -y \
     --no-install-recommends              \
@@ -6,14 +6,13 @@ RUN apt-get update && apt-get install -y \
         gnupg                            \
 && rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb http://ppa.launchpad.net/tobydox/mingw-w64/ubuntu bionic main" >> /etc/apt/sources.list
+RUN echo "deb http://ppa.launchpad.net/tobydox/mingw-w64/ubuntu focal main" >> /etc/apt/sources.list
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 72931B477E22FEFD47F8DECE02FE5F12ADDE29B2
 
 RUN apt-get update && apt-get install -y    \
     --force-yes --no-install-recommends     \
         lsb-release                         \
         nsis                                \
-        cloog-isl                           \
         libmpc3                             \
         mingw-w64                           \
         mingw-w64-tools                     \
@@ -33,7 +32,7 @@ RUN apt-get update && apt-get install -y    \
         libz-mingw-w64-dev                  \
         portaudio-mingw-w64                 \
         qt5base-mingw-w64                   \
-        sdl-mingw-w64                       \
+        sdl2-mingw-w64                      \
         stk-mingw-w64                       \
         file                                \
 && rm -rf /var/lib/apt/lists/*
