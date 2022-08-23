@@ -37,4 +37,13 @@ RUN apt-get update -qq &&       \
         libxcb-keysyms1-dev     \
         libxcb-util0-dev        \
         qtbase5-private-dev     \
+        libavcodec-dev          \
+        libavdevice-dev         \
+        libavfilter-dev         \
+        libavformat-dev         \
+        libavresample-dev       \
+        libavutil-dev           \
+        libpostproc-dev         \
+        libswresample-dev       \
+        libswscale-dev          \
 && rm -rf /var/lib/apt/lists/*
