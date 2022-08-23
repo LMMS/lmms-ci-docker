@@ -37,6 +37,10 @@ RUN apt-get update && apt-get install -y    \
         file                                \
 && rm -rf /var/lib/apt/lists/*
 
+# Compile FFmpeg for MinGW
+# Can be removed once MinGW packages are added in @tobydox's PPA.
+RUN ./compile-ffmpeg.sh
+
 # Work around https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930492
 # FIXME remove once we upgrade to 22.04
 ADD mingw-w64-tools.sha256 /tmp/mingw-w64-tools/mingw-w64-tools.sha256
