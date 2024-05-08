@@ -22,5 +22,6 @@ RUN apt-get update && apt-get install -y    \
 && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y    \
-        qt5-default qttools5-dev-tools      \
+    qt5-default                             \
+    qttools5-dev-tools                      \
 && rm -rf /var/lib/apt/lists/*
