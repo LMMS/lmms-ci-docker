@@ -1,7 +1,10 @@
 #!/bin/sh
 
-# Usage: ./build-image.sh <image> <version>
-# Example usage: ./build-image.sh linux.gcc 20.04
+# Usage: ./build-image-manual.sh <image> <version>
+# Example usage:
+#     ./build-image-manual.sh base 20.04
+#     ./build-image-manual.sh linux 20.04
+#     ./build-image-manual.sh linux.gcc 20.04
 
 # IMPORTANT: For Linux builds, set UBUNTU_VERSION prior to calling:
 #export UBUNTU_VERSION=20.04
@@ -15,7 +18,7 @@ TAG=$2
 IMAGE=$IMAGE_USER/$IMAGE_PREFIX$DOCKERFILE
 
 log() {
-    echo -e "\e[35m[build-image.sh]\e[39m $@"
+    echo "\e[35m[build-image-manual.sh]\e[39m $@"
 }
 
 log "Pulling old image version"
@@ -35,4 +38,6 @@ docker build            \
     $DOCKERFILE
 
 # Finally, push to ghcr.io after building (must be logged in first):
+#docker push ghcr.io/lmms/base:20.04
+#docker push ghcr.io/lmms/linux:20.04
 #docker push ghcr.io/lmms/linux.gcc:20.04
