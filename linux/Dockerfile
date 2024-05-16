@@ -17,13 +17,14 @@ RUN apt-get update -qq &&       \
         libfluidsynth-dev       \
         libgig-dev              \
         libjack-jackd2-dev      \
-        libmp3lame-dev          \
         liblilv-dev             \
+        libmp3lame-dev          \
         libogg-dev              \
         libsamplerate0-dev      \
         libsdl2-dev             \
         libsndfile1-dev         \
         libstk0-dev             \
+        libsuil-dev             \
         libvorbis-dev           \
         libxft-dev              \
         libxinerama-dev         \
@@ -40,4 +41,4 @@ RUN apt-get update -qq &&       \
         libx11-xcb-dev          \
         libxcb-keysyms1-dev     \
         libxcb-util0-dev        \
-&& rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*

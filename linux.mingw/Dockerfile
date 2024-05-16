@@ -1,4 +1,4 @@
-FROM lmmsci/base:20.04
+FROM ghcr.io/lmms/base:20.04
 
 RUN apt-get update && apt-get install -y \
     --no-install-recommends              \
@@ -11,7 +11,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 72931B477E22FEFD47F
 
 RUN apt-get update && apt-get install -y    \
     --force-yes --no-install-recommends     \
-        lsb-release                         \
         nsis                                \
         libmpc3                             \
         mingw-w64                           \
