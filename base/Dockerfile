@@ -26,17 +26,18 @@ RUN apt-get install kitware-archive-keyring
 # Install common dependencies
 RUN apt-get update && apt-get install -y    \
     --no-install-recommends                 \
-        software-properties-common          \
-        make                                \
-        libc6-dev                           \
+        binutils                            \
+        ccache                              \
         cmake                               \
         git                                 \
-        ssh-client                          \
-        ccache                              \
-        perl                                \
+        libc6-dev                           \
+        liblist-moreutils-perl              \
         libxml2-utils                       \
         libxml-perl                         \
-        liblist-moreutils-perl              \
+        make                                \
+        perl                                \
+        software-properties-common          \
+        ssh-client                          \
     && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y    \
