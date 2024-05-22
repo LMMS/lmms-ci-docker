@@ -32,8 +32,6 @@ RUN apt-get update -qq &&       \
         portaudio19-dev         \
         gcc-multilib            \
         g++-multilib            \
-        qt5-qmake               \
-        qtbase5-dev             \
         qtbase5-dev-tools       \
         qtbase5-private-dev     \
         qttools5-dev-tools      \
