@@ -23,7 +23,7 @@ RUN apt-get update -qq &&       \
         libsamplerate0-dev      \
         libsdl2-dev             \
         libsndfile1-dev         \
-        libstk0-dev             \
+        libstk-dev              \
         libsuil-dev             \
         libvorbis-dev           \
         libxft-dev              \
