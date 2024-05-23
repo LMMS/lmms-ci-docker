@@ -21,4 +21,5 @@ RUN mkdir -pm755 /etc/apt/keyrings \
 RUN apt-get update && apt-get install -y    \
     --install-recommends                    \
         winehq-staging                      \
+        wine-staging-dev                    \
     && rm -rf /var/lib/apt/lists/*
