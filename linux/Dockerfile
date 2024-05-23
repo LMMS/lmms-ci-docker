@@ -23,7 +23,7 @@ RUN apt-get update -qq &&       \
         libsamplerate0-dev      \
         libsdl2-dev             \
         libsndfile1-dev         \
-        libstk0-dev             \
+        libstk-dev              \
         libsuil-dev             \
         libvorbis-dev           \
         libxft-dev              \
@@ -32,8 +32,6 @@ RUN apt-get update -qq &&       \
         portaudio19-dev         \
         gcc-multilib            \
         g++-multilib            \
-        qt5-qmake               \
-        qtbase5-dev             \
         qtbase5-dev-tools       \
         qtbase5-private-dev     \
         qttools5-dev-tools      \

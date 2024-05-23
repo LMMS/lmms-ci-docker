@@ -6,9 +6,6 @@
 #     ./build-image-manual.sh linux 20.04
 #     ./build-image-manual.sh linux.gcc 20.04
 
-# IMPORTANT: For Linux builds, set UBUNTU_VERSION prior to calling:
-#export UBUNTU_VERSION=20.04
-
 IMAGE_USER=ghcr.io/lmms
 IMAGE_PREFIX=
 
@@ -34,7 +31,7 @@ log "Building image from Dockerfile"
 docker build            \
     --tag $IMAGE:$TAG   \
     $CACHE_FROM         \
-    --build-arg UBUNTU_VERSION="$UBUNTU_VERSION" \
+    --build-arg UBUNTU_VERSION="$TAG" \
     $DOCKERFILE
 
 # Finally, push to ghcr.io after building (must be logged in first):
