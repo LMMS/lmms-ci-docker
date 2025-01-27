@@ -35,6 +35,7 @@ RUN apt-get update -qq &&       \
         qtbase5-dev-tools       \
         qtbase5-private-dev     \
         qttools5-dev-tools      \
+        libqt5svg5-dev          \
         libqt5x11extras5-dev    \
         libx11-xcb-dev          \
         libxcb-keysyms1-dev     \
