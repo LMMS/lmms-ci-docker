@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y    \
         libz-mingw-w64-dev                  \
         portaudio-mingw-w64                 \
         qt5base-mingw-w64                   \
+        qt5svg-mingw-w64                    \
         sdl2-mingw-w64                      \
         stk-mingw-w64                       \
         file                                \
