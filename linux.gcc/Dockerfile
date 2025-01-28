@@ -20,6 +20,6 @@ RUN mkdir -pm755 /etc/apt/keyrings \
 # VST dependencies
 RUN apt-get update && apt-get install -y    \
     --install-recommends                    \
-        winehq-staging                      \
-        wine-staging-dev                    \
+        winehq-stable                       \
+        wine-stable-dev                     \
     && rm -rf /var/lib/apt/lists/*
